@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -13,9 +13,11 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  Pressable,
   useColorScheme,
   View,
 } from 'react-native';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
   Colors,
@@ -25,93 +27,83 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+function App(): React.JSX.Element {
+  const [isHovered, setIsHovered] = useState(false);
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.mainView}>
+      <View style={styles.secondView}>
+        <View style={styles.thirdView}>
+          <Text style={styles.tick}>✓</Text>
+        </View>
+        <Text style={styles.firstText}>Success</Text>
+        <Text style={styles.secondText}>
+          Your message was sent successfully,{'\n'} please check your mail to
+          confirm
+        </Text>
+        <Pressable style={styles.buttonStyling}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  mainView: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#FFE5B4',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  secondView: {
+    width: '90%',
+    height: '98%',
+    borderRadius: 30,
+    backgroundColor: 'white',
+    alignItems: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  thirdView: {
+    width: 186,
+    height: 186,
+    backgroundColor: '#FFE5B4',
+    borderRadius: 93,
+    marginTop: 77,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  tick: {
+    color: '#FF4500',
+    fontSize: 95,
+  },
+  firstText: {
+    marginTop: 51,
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  secondText: {
+    marginTop: 17,
+    marginLeft: 30,
+    marginRight: 30,
+    color: 'gray',
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+  buttonStyling: {
+    backgroundColor: '#FF4500',
+    width: '83%',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 300,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
