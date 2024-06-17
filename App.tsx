@@ -9,15 +9,16 @@ import {
   Pressable,
   useColorScheme,
   View,
+  FlatList,
 } from 'react-native';
+import LoginScreen from './src/LoginScreen';
 
 function App(): React.JSX.Element {
+
  return(
-  <View>
-    
-  </View>
+  <LoginScreen/>
  )
-}
+};
 
  
 
