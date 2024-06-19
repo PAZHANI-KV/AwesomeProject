@@ -9,13 +9,17 @@ import {
   TextInput,
   View,
 } from 'react-native';
+
+type LoginProps = {
+  navigation: any
+}
  
-const LoginScreen = () => {
+const LoginScreen = (props: LoginProps) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
  
   const handlePress = () => {
-    if (userName.length === 0 && password.length === 0) {
+    if (userName.length === 0 || password.length === 0) {
       Alert.alert('Error', 'Please enter valid credentials');
     } else if (userName.length < 6 && password.length < 8) {
       Alert.alert('Error', 'Invalid Username or Password');
@@ -24,8 +28,7 @@ const LoginScreen = () => {
     } else if (password.length < 8) {
       Alert.alert('Error', 'Invalid Password');
     } else {
-      Alert.alert('Success', 'Logged in Successfully');
-    }
+props.navigation.push("Home")    }
   };
  
   return (
