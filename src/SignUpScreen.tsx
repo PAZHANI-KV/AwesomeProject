@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Alert,
   Image,
@@ -9,13 +9,12 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
-type LoginProps = {
-  navigation: any
+type SignupProps = {
+  navigation?: any,
 }
  
-const LoginScreen = (props: LoginProps) => {
+const SignUpcreen = (props: SignupProps) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
  
@@ -32,24 +31,6 @@ const LoginScreen = (props: LoginProps) => {
 props.navigation.push("Home")    }
   };
  
-
-  useEffect(() => {
-exampleFunction();
-  }, []);
-
-  const exampleFunction = async () => {
-try{
-const res = await fetch("https://reqres.in/api/users/2", {method:"GET"});
-const response = await res.json();
-console.log(response);
-}catch{
-
-}finally{
-
-}
-  };
-
-
   return (
     <View style={styles.mainView}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -60,21 +41,28 @@ console.log(response);
           />
         </View>
         <View style={styles.secondView}>
-          <Text style={styles.topText}>Sign In</Text>
+          <Text style={styles.topText}>Sign Up</Text>
         </View>
         <TextInput
           style={styles.inputHolder}
-          placeholder="Username"
+          placeholder="Enter Username"
           value={userName}
           onChangeText={setUserName}
         />
         <TextInput
           style={styles.inputHolder}
-          placeholder="Password"
+          placeholder="Enter Password"
           secureTextEntry
           value={password}
           onChangeText={setPassword}
         />
+        {/* <TextInput
+          style={styles.inputHolder}
+          placeholder="Confirm Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        /> */}
         <Pressable style={styles.button} onPress={handlePress}>
           <Text style={styles.submitText}>Submit</Text>
         </Pressable>
@@ -137,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
  
-export default LoginScreen;
+export default SignUpcreen;

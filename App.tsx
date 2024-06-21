@@ -17,23 +17,23 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DetailsPage from './src/DetailsPage';
 import FlatListExample from './src/FlatListExample';
+import SignUpcreen from './src/SignUpScreen';
 
-// const Tab = createNativeStackNavigator();
-// const Stack = createNativeStackNavigator();
+const Tab = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
-return(
-  <FlatListExample/>
-)
-//  return(
-//  <NavigationContainer>
-//   <Stack.Navigator initialRouteName='Login'>
-//   <Stack.Screen name="Login" component={LoginScreen} />
-//   <Stack.Screen name="Details" component={DetailsPage} />
-//   <Stack.Screen name="Home" component={HomeScreenTwo} />
-//   </Stack.Navigator>
-//  </NavigationContainer>
-//  )
+
+ return(
+ <NavigationContainer>
+  <Stack.Navigator initialRouteName='Login'>
+  <Stack.Screen name="Login" component={LoginScreen} />
+  <Stack.Screen name="Details" component={DetailsPage} />
+  <Stack.Screen name="Home" component={HomeScreenTwo} />
+  </Stack.Navigator>
+ </NavigationContainer>
+
+ )
 };
 
 
