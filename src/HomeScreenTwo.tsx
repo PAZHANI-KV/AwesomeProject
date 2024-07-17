@@ -2,6 +2,7 @@ import React from 'react';
 import {
   FlatList,
   Image,
+  Modal,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,86 +10,98 @@ import {
 } from 'react-native';
 import {ScreenOrientationTypes} from 'react-native-screens';
 
-type listData = {
+type homeProps = {
+  navigation: any;
+};
+
+export type listData = {
   imageUrl: String;
   topic: string;
   description: string;
 };
 
-const HomeScreenTwo = (props: any) => {
+const HomeScreenTwo = (props: homeProps) => {
+
+  const onItemClick = (item: listData) => {
+    return(
+      props.navigation.navigate('Details', item)
+    
+    )
+      
+  }
+
   const listData = [
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'One',
       description: 'How are you one?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Two',
       description: 'How are you two?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Three',
       description: 'How are you Three?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Four',
       description: 'How are you Four?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Five',
       description: 'How are you Five?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Six',
       description: 'How are you six?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Seven',
       description: 'How are you seven?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Eight',
       description: 'How are you eight?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Nine',
       description: 'How are you nine?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Ten',
       description: 'How are you ten?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Eleven',
       description: 'How are you eleven?',
     },
     {
-      imageUrl: "https://picsum.photos/200",
+      imageUrl: 'https://media.istockphoto.com/id/1095885438/photo/the-bandra-worli-sea-link.jpg?s=1024x1024&w=is&k=20&c=VoTfOaohVt8OyE-_xSELqc1UKZ7d3Fwim3JAMYPKLV8=',
       topic: 'Twelve',
       description: 'How are you twelve?',
     },
   ];
 
-  const renderItem = ({item}: any) => {
+  const renderItem = (item : listData ) => {
     return (
+
       <TouchableOpacity
-        onPress={() => {
-          props.navigation.push('Details');
-        }}
+        onPress={() => onItemClick(item)}
         style={styles.contentView}>
-          <View>
-          <Image style={{width: '100%'}} source={{uri: item.imageUrl}} />
-          </View>
+        <View>
+          <Image  source ={{uri: item.imageUrl}} style={{width: '100%'}} />
+        </View>
         <View>
           <Text>{item.topic}</Text>
           <Text>{item.description}</Text>
@@ -109,9 +122,10 @@ const HomeScreenTwo = (props: any) => {
 
   return (
     <View style={styles.mainView}>
+      
       <FlatList
         data={listData}
-        renderItem={({item}) => renderItem({item})}
+        renderItem={({item}) => renderItem(item)}
         keyExtractor={item => item.id}
         // horizontal={true}
         // style={{width:'100%'}}
@@ -121,6 +135,7 @@ const HomeScreenTwo = (props: any) => {
         // ListEmptyComponent={}
       />
     </View>
+    
   );
 };
 
@@ -149,4 +164,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreenTwo;
+export default HomeScreenTwo

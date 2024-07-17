@@ -14,22 +14,27 @@ type SignupProps = {
   navigation?: any,
 }
  
-const SignUpcreen = (props: SignupProps) => {
+const SignUpScreen = (props: SignupProps) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
  
-  const handlePress = () => {
-    if (userName.length === 0 || password.length === 0) {
-      Alert.alert('Error', 'Please enter valid credentials');
-    } else if (userName.length < 6 && password.length < 8) {
-      Alert.alert('Error', 'Invalid Username or Password');
-    } else if (userName.length < 6) {
-      Alert.alert('Error', 'Invalid Username');
-    } else if (password.length < 8) {
-      Alert.alert('Error', 'Invalid Password');
-    } else {
-props.navigation.push("Home")    }
-  };
+//   const handlePress = () => {
+//     if (userName.length === 0 || password.length === 0) {
+//       Alert.alert('Error', 'Please enter valid credentials');
+//     } else if (userName.length < 6 && password.length < 8) {
+//       Alert.alert('Error', 'Invalid Username or Password');
+//     } else if (userName.length < 6) {
+//       Alert.alert('Error', 'Invalid Username');
+//     } else if (password.length < 8) {
+//       Alert.alert('Error', 'Invalid Password');
+//     } else {
+// props.navigation.push("Home")    }
+//   };
+
+  const handleEntry = () => {
+       Alert.alert("Successfully Registered!");
+      props.navigation.push("Home");
+  }
  
   return (
     <View style={styles.mainView}>
@@ -63,8 +68,8 @@ props.navigation.push("Home")    }
           value={password}
           onChangeText={setPassword}
         /> */}
-        <Pressable style={styles.button} onPress={handlePress}>
-          <Text style={styles.submitText}>Submit</Text>
+        <Pressable style={styles.button} >
+          <Text style={styles.submitText} onPress={handleEntry}>Submit</Text>
         </Pressable>
       </ScrollView>
     </View>
@@ -125,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
  
-export default SignUpcreen;
+export default SignUpScreen;
