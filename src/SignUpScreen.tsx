@@ -16,25 +16,15 @@ type SignupProps = {
  
 const SignUpScreen = (props: SignupProps) => {
   const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
- 
-//   const handlePress = () => {
-//     if (userName.length === 0 || password.length === 0) {
-//       Alert.alert('Error', 'Please enter valid credentials');
-//     } else if (userName.length < 6 && password.length < 8) {
-//       Alert.alert('Error', 'Invalid Username or Password');
-//     } else if (userName.length < 6) {
-//       Alert.alert('Error', 'Invalid Username');
-//     } else if (password.length < 8) {
-//       Alert.alert('Error', 'Invalid Password');
-//     } else {
-// props.navigation.push("Home")    }
-//   };
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleEntry = () => {
-       Alert.alert("Successfully Registered!");
-      props.navigation.push("Home");
-  }
+ const handleEntry = () => {
+  Alert.alert("Account Created")
+  props.navigation.navigate("Home")
+ }
+
  
   return (
     <View style={styles.mainView}>
@@ -54,6 +44,12 @@ const SignUpScreen = (props: SignupProps) => {
           value={userName}
           onChangeText={setUserName}
         />
+         <TextInput
+          style={styles.inputHolder}
+          placeholder="Enter Username"
+          value={email}
+          onChangeText={setEmail}
+        />
         <TextInput
           style={styles.inputHolder}
           placeholder="Enter Password"
@@ -61,13 +57,13 @@ const SignUpScreen = (props: SignupProps) => {
           value={password}
           onChangeText={setPassword}
         />
-        {/* <TextInput
+        <TextInput
           style={styles.inputHolder}
           placeholder="Confirm Password"
           secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        /> */}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
         <Pressable style={styles.button} >
           <Text style={styles.submitText} onPress={handleEntry}>Submit</Text>
         </Pressable>

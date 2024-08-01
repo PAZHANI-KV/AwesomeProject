@@ -1,5 +1,7 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
 import {
+  Button,
   FlatList,
   Image,
   Modal,
@@ -120,6 +122,11 @@ const HomeScreenTwo = (props: homeProps) => {
   //     </View>
   //   );
 
+  const signOutAction = async () => {
+    await AsyncStorage.removeItem("USER_TOKEN");
+   props.navigation.pop();
+  }
+
   return (
     <View style={styles.mainView}>
       
@@ -134,6 +141,7 @@ const HomeScreenTwo = (props: homeProps) => {
         // ListFooterComponent={}
         // ListEmptyComponent={}
       />
+      <Button title='SignOut' onPress={() => {signOutAction()}}/>
     </View>
     
   );

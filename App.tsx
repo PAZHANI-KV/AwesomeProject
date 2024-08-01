@@ -22,6 +22,10 @@ import SwitchComponent from './src/SwitchComponent';
 import pickerComponent from './src/PickerComponent';
 import PickerComponent from './src/PickerComponent';
 import CheckBoxComponent from './src/CheckBoxComponent';
+import DatePiker from './src/DatePiker';
+import PortraitAndLandscape from './src/PortraitAndLandscape';
+import CustomCheckBoxTwo from './src/CustomCheckBoxTwo';
+import AsyncStrorege from './src/AsyncStrorege';
 
 const Tab = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -46,14 +50,18 @@ function App(): React.JSX.Element {
   };
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Checkbox">
-        {/* <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Navigator initialRouteName="Signup"> 
+         {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
         <Stack.Screen name="Signup" component={SignUpScreen} />
-        <Stack.Screen name="Home" component={HomeScreenTwo} />
-        <Stack.Screen name="Details" component={DetailsPage} />  */}
-        {/* <Stack.Screen name="Switch" component={SwitchComponent} /> */}
- {/* <Stack.Screen name="picker" component={PickerComponent}/> */}
+        {/* <Stack.Screen name="Home" component={HomeScreenTwo} /> */}
+        {/* <Stack.Screen name="Details" component={DetailsPage} />  
+        <Stack.Screen name="Switch" component={SwitchComponent} />
+ <Stack.Screen name="picker" component={PickerComponent}/>
  <Stack.Screen name="Checkbox" component={CheckBoxComponent}/>
+ <Stack.Screen name="DatePiker" component={DatePiker}/>
+ <Stack.Screen name='Landscape' component={PortraitAndLandscape}/>
+  <Stack.Screen name='CustomTwo' component={CustomCheckBoxTwo}/>  */}
+ {/* <Stack.Screen name="Async" component={AsyncStrorege}/> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
