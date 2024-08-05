@@ -26,33 +26,50 @@ import DatePiker from './src/DatePiker';
 import PortraitAndLandscape from './src/PortraitAndLandscape';
 import CustomCheckBoxTwo from './src/CustomCheckBoxTwo';
 import AsyncStrorege from './src/AsyncStrorege';
+import Dummy from './src/Dummy';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Tab = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
 
-function App(): React.JSX.Element {
-  const LoginStack = () => {
-    return (
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignUpScreen} />
-      </Stack.Navigator>
-    );
-  };
+const LoginStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignUpScreen} />
+    </Stack.Navigator>
 
-  const HomeStack = () => {
-    return (
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreenTwo} />
-        <Stack.Screen name="Details" component={DetailsPage} />
-      </Stack.Navigator>
-    );
-  };
+);
+};
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomeScreenTwo} />
+      <Stack.Screen name="Details" component={DetailsPage} />
+    </Stack.Navigator>
+  );
+};
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator initialRouteName='LoginStack'>
+      <Tab.Screen name="LoginStack" component={LoginStack} />
+      <Tab.Screen name="HomeStack" component={HomeStack} />
+    </Tab.Navigator>
+  );
+}
+
+function App(): React.JSX.Element {
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signup"> 
+      {/* <LoginStack/> */}
+      <MyTabs/>
+      {/* <Stack.Navigator initialRouteName="Signup">  */}
          {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
-        <Stack.Screen name="Signup" component={SignUpScreen} />
+        {/* <Stack.Screen name="Signup" component={SignUpScreen} /> */}
         {/* <Stack.Screen name="Home" component={HomeScreenTwo} /> */}
         {/* <Stack.Screen name="Details" component={DetailsPage} />  
         <Stack.Screen name="Switch" component={SwitchComponent} />
@@ -62,7 +79,7 @@ function App(): React.JSX.Element {
  <Stack.Screen name='Landscape' component={PortraitAndLandscape}/>
   <Stack.Screen name='CustomTwo' component={CustomCheckBoxTwo}/>  */}
  {/* <Stack.Screen name="Async" component={AsyncStrorege}/> */}
-      </Stack.Navigator>
+      {/* </Stack.Navigator> */}
     </NavigationContainer>
   );
 }

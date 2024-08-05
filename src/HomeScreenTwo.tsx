@@ -26,7 +26,7 @@ const HomeScreenTwo = (props: homeProps) => {
 
   const onItemClick = (item: listData) => {
     return(
-      props.navigation.navigate('Details', item)
+      props.navigation.navigate("Details", {item})
     
     )
       
@@ -101,9 +101,9 @@ const HomeScreenTwo = (props: homeProps) => {
       <TouchableOpacity
         onPress={() => onItemClick(item)}
         style={styles.contentView}>
-        <View>
+        {/* <View>
           <Image  source ={{uri: item.imageUrl}} style={{width: '100%'}} />
-        </View>
+        </View> */}
         <View>
           <Text>{item.topic}</Text>
           <Text>{item.description}</Text>

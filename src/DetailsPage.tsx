@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Button,
   Image,
@@ -11,11 +11,16 @@ import {
 import {listData} from './HomeScreenTwo';
 
 type DetailProps = {
-  navigation: any;
-  listItem: listData;
+  navigation?: any;
+  // listItem?: listData;
+  route: any;
 };
 
 const DetailsPage = (props: DetailProps) => {
+  const [list, setList] = useState(props.route.params.item);
+
+  //When we need to pass any data from one page to another page, then we need to use the route to pass the data. Here in the above line, we are getting data(image, title, description) from home component to this details component and hence using the route.
+
   return (
     <View
       style={{
@@ -27,31 +32,30 @@ const DetailsPage = (props: DetailProps) => {
         flexDirection: 'row',
         justifyContent: 'center',
       }}>
-      
-        <View style={{width: '20%', height: 70, marginLeft: 20}}>
+      {/* <View style={{width: '20%', height: 70, marginLeft: 20}}>
           <Image
             style={{width: 70, height: 70, borderRadius: 35}}
             source={{uri: props.listItem.imageUrl}}
           />
-        </View>
-        <View
-          style={{
-            width: 70,
-            height: 70,
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-          }}>
-          <Text style={{fontSize: 21, fontWeight: 600, color: '#ADD886'}}>
-            {props.listItem.topic}
-          </Text>
-          <Text style={{fontSize: 21, fontWeight: 600, color: '#ADD886'}}>
-            {props.listItem.description}
-          </Text>
-        </View>
-   
+        </View> */}
+      <View
+        style={{
+          width: 70,
+          height: 70,
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+        }}>
+        <Text style={{fontSize: 21, fontWeight: 600, color: 'orange'}}>
+          {list.topic}
+        </Text>
+        <Text style={{fontSize: 21, fontWeight: 600, color: '#ADD886'}}>
+          {list.description}
+        </Text>
+      </View>
+
       <Button
         title="Done"
-        onPress={() => props.navigation.navigate('Login')}></Button>
+        onPress={() => props.navigation.navigate('Home')}></Button>
     </View>
   );
 };

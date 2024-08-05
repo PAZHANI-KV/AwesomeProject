@@ -11,29 +11,29 @@ import {
 } from 'react-native';
 
 type SignupProps = {
-  navigation?: any,
-}
- 
+  navigation?: any;
+};
+
 const SignUpScreen = (props: SignupProps) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
- const handleEntry = () => {
-  Alert.alert("Account Created")
-  props.navigation.navigate("Home")
- }
+  const handleEntry = () => {
+    Alert.alert('Account Created');
+    props.navigation.navigate('Home');
+  };
 
- 
+  const handleLogin = () => {
+    props.navigation.navigate("Login")
+      }
+
   return (
     <View style={styles.mainView}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.logoView}>
-          <Image
-            source={require('../assets/image.png')}
-            style={styles.logo}
-          />
+          <Image source={require('../assets/image.png')} style={styles.logo} />
         </View>
         <View style={styles.secondView}>
           <Text style={styles.topText}>Sign Up</Text>
@@ -41,37 +41,50 @@ const SignUpScreen = (props: SignupProps) => {
         <TextInput
           style={styles.inputHolder}
           placeholder="Enter Username"
+          placeholderTextColor={'black'}
           value={userName}
           onChangeText={setUserName}
+          keyboardType='default'
         />
-         <TextInput
+        <TextInput
           style={styles.inputHolder}
-          placeholder="Enter Username"
+          placeholder="Enter Email"
+          placeholderTextColor={'black'}
           value={email}
           onChangeText={setEmail}
+          keyboardType='default'
         />
         <TextInput
           style={styles.inputHolder}
           placeholder="Enter Password"
+          placeholderTextColor={'black'}
           secureTextEntry
           value={password}
           onChangeText={setPassword}
+          keyboardType='default'
         />
         <TextInput
           style={styles.inputHolder}
           placeholder="Confirm Password"
+          placeholderTextColor={'black'}
           secureTextEntry
           value={confirmPassword}
           onChangeText={setConfirmPassword}
+          keyboardType='default'
         />
-        <Pressable style={styles.button} >
-          <Text style={styles.submitText} onPress={handleEntry}>Submit</Text>
+        <Text>Already having an Account? , </Text>
+  <Text onPress={handleLogin}>Sign In!</Text>
+
+        <Pressable style={styles.button}>
+          <Text style={styles.submitText} onPress={handleEntry}>
+            Submit
+          </Text>
         </Pressable>
       </ScrollView>
     </View>
   );
-}
- 
+};
+
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
@@ -125,5 +138,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
- 
+
 export default SignUpScreen;
