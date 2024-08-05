@@ -19,7 +19,7 @@ type DetailProps = {
 const DetailsPage = (props: DetailProps) => {
   const [list, setList] = useState(props.route.params.item);
 
-  //When we need to pass any data from one page to another page, then we need to use the route to pass the data. Here in the above line, we are getting data(image, title, description) from home component to this details component and hence using the route.
+  //When we need to pass any data from one page to another page, then we need to use the route to pass the data(Because, here the data which we passed from the home screen will automatically be saved in the route of the detailspage screen as default). Here in the above line, we are getting data(image, title, description) from home component to this details component and hence using the route.
 
   return (
     <View
@@ -35,7 +35,7 @@ const DetailsPage = (props: DetailProps) => {
       {/* <View style={{width: '20%', height: 70, marginLeft: 20}}>
           <Image
             style={{width: 70, height: 70, borderRadius: 35}}
-            source={{uri: props.listItem.imageUrl}}
+            source={{uri: list.imageUrl}}
           />
         </View> */}
       <View

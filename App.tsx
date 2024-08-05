@@ -10,6 +10,7 @@ import {
   useColorScheme,
   View,
   FlatList,
+  Image,
 } from 'react-native';
 import LoginScreen from './src/LoginScreen';
 import HomeScreenTwo from './src/HomeScreenTwo';
@@ -54,7 +55,19 @@ const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
-    <Tab.Navigator initialRouteName='LoginStack'>
+    <Tab.Navigator initialRouteName='LoginStack' screenOptions={({route}) => ({
+      tabBarIcon: ({}) => {
+        let imageUrl;
+        if(route.name === "LoginStack"){
+          imageUrl = "https://i.pinimg.com/originals/97/21/05/972105c5a775f38cf33d3924aea053f1.jpg"
+        }else{
+          imageUrl = "https://w7.pngwing.com/pngs/848/762/png-transparent-computer-icons-home-house-home-angle-building-rectangle-thumbnail.png"
+        }
+        return(
+          <Image style={{width:36, height:36}} source={{uri: imageUrl }}/>
+        )
+      }
+    })}>
       <Tab.Screen name="LoginStack" component={LoginStack} />
       <Tab.Screen name="HomeStack" component={HomeStack} />
     </Tab.Navigator>
