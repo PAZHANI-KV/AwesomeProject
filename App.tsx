@@ -70,6 +70,7 @@ function MyTabs() {
     })}>
       <Tab.Screen name="LoginStack" component={LoginStack} />
       <Tab.Screen name="HomeStack" component={HomeStack} />
+      <Tab.Screen name="AsyncLogin" component={AsyncStrorege} />
     </Tab.Navigator>
   );
 }

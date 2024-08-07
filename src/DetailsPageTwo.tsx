@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Text, TouchableOpacity } from 'react-native'
+import { Button, Text, TouchableOpacity, View } from 'react-native'
 
 
 type detailProps ={
@@ -7,12 +7,15 @@ type detailProps ={
     
 }
 
-const DetailsPageTwo = () => {
+const DetailsPageTwo = (props: detailProps) => {
   return (
-    <Text>Hello</Text>
-    <TouchableOpacity style={detailScreenStyles.buttonStyles} onPress={() => props.navigation.navigate('Loginp')}>
-    <Text style={detailScreenStyles. textView}> Exit </Text>
+    <View>
+       <Text>Hello</Text>
+    <TouchableOpacity  onPress={() => props.navigation.navigate('Loginp')}>
+    <Text > Exit </Text>
 </TouchableOpacity>
+    </View>
+   
 
   )
 }
