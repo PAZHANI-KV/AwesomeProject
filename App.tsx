@@ -35,8 +35,8 @@ const Stack = createNativeStackNavigator();
 const LoginStack = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignUpScreen} />
+      <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
+      <Stack.Screen options={{headerShown: false}} name="Signup" component={SignUpScreen} />
     </Stack.Navigator>
 
 );
@@ -45,8 +45,8 @@ const LoginStack = () => {
 const HomeStack = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreenTwo} />
-      <Stack.Screen name="Details" component={DetailsPage} />
+      <Stack.Screen options={{headerShown: false}} name="Home" component={HomeScreenTwo} />
+      <Stack.Screen options={{headerShown: false}} name="Details" component={DetailsPage} />
     </Stack.Navigator>
   );
 };
@@ -69,7 +69,7 @@ function MyTabs() {
       }
     })}>
       <Tab.Screen name="LoginStack" component={LoginStack} />
-      <Tab.Screen name="HomeStack" component={HomeStack} />
+      <Tab.Screen options={{headerShown: false}} name="HomeStack" component={HomeStack} />
       <Tab.Screen name="AsyncLogin" component={AsyncStrorege} />
     </Tab.Navigator>
   );

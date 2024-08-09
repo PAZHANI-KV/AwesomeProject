@@ -63,7 +63,13 @@ checkUserLoggedIn();
 
 const checkUserLoggedIn = async () => {
 const result = await AsyncStorage.getItem("USER_TOKEN");
-// console.log("TOKEN_DATA", result);
+
+// const userData = await AsyncStorage.getItem("firstName");
+// const userData = await AsyncStorage.multiGet(['FirstName', 'LastName']);,
+// console.log(userData);
+
+console.log("TOKEN_DATA", result);
+
 if(result && result!==null){
     props.navigation.navigate('Home');
 }
